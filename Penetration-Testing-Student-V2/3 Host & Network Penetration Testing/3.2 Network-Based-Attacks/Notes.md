@@ -7,6 +7,8 @@
     - [Tshark](#tshark)
     - [Filtering Basics](#filtering-basics)
     - [ARP Poisoning](#arp-poisoning)
+    - [Wifi Traffic Analysis](#wifi-traffic-analysis)
+    - [Filtering Wifi](#filtering-wifi)
 
 # Host & Network Penetration Testing: Network-Based Attacks #
 
@@ -113,20 +115,85 @@ Then can do the spoof via:
 Can now look at Wireshark to see what is sent to us
 + Example: We can spoof a machine that someone might telnet to, then collect the credentials
 
+### Wifi Traffic Analysis ###
 
+Will use Wireshark to view a capture, and then will use filters to get the information we need 
+![](Images/wireless-security-protocols-comparison-www.ipcisco.jpg)
+[Wifi Wireshark Filter Reference Sheet](Images/wireshark_802.11_filters_reference_sheet.pdf)
 
+Can quickly see if its wifi traffic if the protocol is `802.11`
 
+How to find <pu>Open (No Security) SSID</pu> in the packet dump
++ Will look for beacon packets only 
+  + Which is a management frame that announce the presence of the WLAN
+  + Filter: `wlan.fc.type_subtype == 8`
++ Remove encrypted connections
+  + `!(wlan.fixed.capabilities.privacy == 1)`
++ Remove packets with RSN information tags 
++ Remove RSN (Robust Security Network) term 
+  + Open networks do not have this 
+  + `!(wlan.tag.number == 48)`
++ <r>Full filter</r>: `(wlan.fc.type_subtype == 8) && !(wlan.fixed.capabilities.privacy == 1) && !(wlan.tag.number == 48)`
++ From what is returned, <g>check the SSID</g> and that will be an open SSID
 
+How to find what <pu>channel an SSID is on</pu> 
++ Will need to filter for the network name:
+  + Example: `wlan.ssid == SSID_NAME`
+  + or: `wlan contains SSID_NAME`
++ Then will click `IEEE 802.11 wireless LAN > Tagged Parameters`
+  + Then look for `DS Parameter set: Current Channel: CHANNEL_NUMBER`
 
+Find <pu>Security Protocol of SSID</pu>
++ Narrow down which SSID with `wlan.ssid == SSID_NAME`
++ Can also narrow down to rows with a RSN (Robust Security Network) term
+  + With: `wlan.fixed.capabilities.privacy == 1`
+  + Though an Open SSID will not have this 
++ Then click on a row and go to `Tag:  RSN Information`
+  + Will then look at <g>Cipher Suite</g> (***Encryption***) and <g>Auth Key Management</g> (***Authentication***) and see what matches
 
+Find if <pu>WiFi Protected Setup (WPS) is enabled</pu> on a SSID
++ Will need to filter for the network name:
+  + Example: `wlan contains SSID_NAME`
++ Will also look for beacon packets only 
+  + Which is a management frame that announce the presence of the WLAN
+  + Filter: `wlan.fc.type_subtype == 8`
++ <r>Full filter</r>: `(wlan contains SSID_NAME) && (wlan.fc.type_subtype == 8)`
++ Then will click `IEEE 802.11 wireless LAN > Tagged Parameters > Tag: Vendor Specific: Microsoft Corp`
+  + If you see WPS, it is enabled
 
+Find the <pu>total count of packets either transmitted or received by a MAC address</pu> 
++ Will isolate WLAN transmitted with:
+  + `wlan.ta == MAC_ADDRESS`
++ + Will isolate WLAN received with:
+  + `wlan.ra == MAC_ADDRESS`
++ <r>Full filter</r>: `(wlan.ta == MAC_ADDRESS) || (wlan.ra == MAC_ADDRESS)`
++ Can then see Packet Displayed number on the bottom right
 
+Find the <pu>MAC address of the station which exchanged data packets with a SSID</pu>
++ First need to find the bssid (The MAC of the Access Point)
+  + To do so, will go to `Wireless > WLAN Traffic`
+    + Will then filter for the SSID with `wlan.ssid contains SSID_NAME`
+    + Now have a BSSID or many 
++ Will then have to filter for that BSSID:
+  + `(wlan.bssid == MAC_ADDRESS)`
++ And filter for only data frames with:
+  + `wlan.fc.type_subtype == 0x0020`
++ <r>Full filter</r>: `(wlan.bssid == MAC_ADDRESS) && (wlan.fc.type_subtype == 0x0020)`
++ Then will click on a frame, click `IEEE 802.11 Data, Flags:`
+  + And will look at source address to see the MAC
 
+Find a <pu>TSF time stamp of an association response between an SSID and a MAC address of a station</pu>
++ First need to find the bssid (The MAC of the Access Point)
+  + To do so, will go to `Wireless > WLAN Traffic`
+    + Will then filter for the SSID with `wlan.ssid contains SSID_NAME`
+    + Now have a BSSID or many
++ then will filter for MAC address of a station with:
+  + `(wlan.addr==MAC_OF_STATION)`
++ Will filter for association response with `wlan.fc.type_subtype == 1`
++ <r>Full filter</r>: `((wlan.bssid == MAC_ADDRESS)) && (wlan.addr==MAC_OF_STATION) && (wlan.fc.type_subtype == 1)`
++ Look under `802.11 radio information` for TSF timestamp 
 
-
-
-
-
+### Filtering Wifi ###
 
 
 
