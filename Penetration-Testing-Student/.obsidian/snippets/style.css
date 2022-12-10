@@ -1,0 +1,6 @@
+/* Different color for bold*/
+.cm-strong,
+.markdown-preview-section strong {
+  color: #ffffff !important;
+  font-weight: 900;
+}

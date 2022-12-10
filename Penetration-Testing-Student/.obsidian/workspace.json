@@ -1,0 +1,155 @@
+{
+  "main": {
+    "id": "a63a6c362bfe7b64",
+    "type": "split",
+    "children": [
+      {
+        "id": "125aad651e672658",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "51f29a3bf5083d94",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3 Host & Network Penetration Testing/3.4 Host&Network-Penetration-Testing Exploitation.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a2722fa97f05a441",
+    "type": "split",
+    "children": [
+      {
+        "id": "ba6ebdfcc3d6a2ad",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "981468e34cc552a9",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4c8a0c9d71e02969",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "94f921d477097bb3",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 297.5008087158203
+  },
+  "right": {
+    "id": "4f0219feb6c20111",
+    "type": "split",
+    "children": [
+      {
+        "id": "3203805b3b3c1204",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3b6e2db2046e3a8c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "3 Host & Network Penetration Testing/3.4 Host&Network-Penetration-Testing Exploitation.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "393616c5cbba597c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "3 Host & Network Penetration Testing/3.4 Host&Network-Penetration-Testing Exploitation.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f5f5aa69c8d2f8b4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "8c83411ca27bed74",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "3 Host & Network Penetration Testing/3.4 Host&Network-Penetration-Testing Exploitation.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "ribbon": {
+    "mostRecentAction": ""
+  },
+  "active": "51f29a3bf5083d94",
+  "lastOpenFiles": [
+    "3 Host & Network Penetration Testing/3.2 Network-Based-Attacks.md",
+    "3 Host & Network Penetration Testing/3.4 Host&Network-Penetration-Testing Exploitation.md",
+    "3 Host & Network Penetration Testing/3.3 Host&Network-Penetration-Testing Metasploit(MSF).md",
+    "3 Host & Network Penetration Testing/3.1 System&Host-Based-Attacks.md",
+    "1 Assessment Methodologies/1.3 Enumeration.md",
+    "3 Host & Network Penetration Testing/Images/PTwithMSF.png",
+    "3 Host & Network Penetration Testing/Images/wireless-security-protocols-comparison-www.ipcisco.jpg",
+    "3 Host & Network Penetration Testing/Images/wireshark_802.11_filters_reference_sheet.pdf",
+    "3 Host & Network Penetration Testing/Images/WebsitePic.png",
+    "3 Host & Network Penetration Testing/Images/PostExploit.png"
+  ]
+}
